@@ -39,12 +39,12 @@ Protokol Komunikasi
 
 Asumsi Simulasi
 
-1. MPU6050 digunakan sebagai pengganti BNO055 karena keterbatasan komponen pada Wokwi.
-2. Nilai Roll dan Pitch dihitung menggunakan data accelerometer.
-3. Nilai Yaw menggunakan data kecepatan sudut sumbu Z dari gyroscope.
-4. Nilai sudut dibatasi pada rentang -90 hingga +90 derajat.
-5. Posisi awal servo adalah 0 derajat dengan PWM 1500 µs.
-6. Ketika PIR mendeteksi gerakan, seluruh servo bergerak ke +45 derajat dengan PWM 1750 µs.
+a. MPU6050 digunakan sebagai pengganti BNO055 karena keterbatasan komponen pada Wokwi.
+b. Nilai Roll dan Pitch dihitung menggunakan data accelerometer.
+c. Nilai Yaw menggunakan data kecepatan sudut sumbu Z dari gyroscope.
+d. Nilai sudut dibatasi pada rentang -90 hingga +90 derajat.
+e. Posisi awal servo adalah 0 derajat dengan PWM 1500 µs.
+f. Ketika PIR mendeteksi gerakan, seluruh servo bergerak ke +45 derajat dengan PWM 1750 µs.
 
 
 3. Feature Table
