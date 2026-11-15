@@ -23,13 +23,12 @@ Ketika terjadi perubahan orientasi, servo akan bergerak mengikuti nilai sudut ya
 
 Komponen yang Digunakan
 
-| Komponen      | Fungsi                                        |
-|               |                                               |
-| ESP32         | Mikrokontroler utama                          |
-| MPU6050       | Membaca percepatan dan kecepatan sudut        |
-| PIR Sensor    | Mendeteksi gerakan eksternal                  |
-| 5 Servo Motor | Menghasilkan gerakan berdasarkan input sensor |
-
+| No. | Komponen | Jumlah | Fungsi |
+|:---:|---|:---:|---|
+| 1 | ESP32 | 1 | Mikrokontroler utama untuk memproses data sensor dan mengontrol servo. |
+| 2 | MPU6050 | 1 | Membaca percepatan dan kecepatan sudut untuk mendeteksi orientasi. |
+| 3 | PIR Sensor | 1 | Mendeteksi gerakan eksternal. |
+| 4 | Servo Motor | 5 | Menghasilkan gerakan berdasarkan input sensor. |
 Protokol Komunikasi
 
 - I2C: Komunikasi ESP32 dengan MPU6050 menggunakan SDA (GPIO 21) dan SCL (GPIO 22).
@@ -50,8 +49,6 @@ Asumsi Simulasi
 
 3. Feature Table
 
-## 3. Feature Table
-
 | Fitur | Input (Sensor) | Output (Aktuator) | Perilaku |
 |:---|:---|:---|:---|
 | **Roll** | Accelerometer (X, Y, Z) | Servo 1 dan Servo 2 | Servo bergerak berlawanan arah mengikuti perubahan sudut Roll. |
@@ -60,26 +57,28 @@ Asumsi Simulasi
 | **Gerakan Eksternal** | Sensor PIR | Servo 1–5 | Ketika gerakan terdeteksi, seluruh servo bergerak ke +45° (1750 µs) selama 1,5 detik, kemudian kembali ke posisi awal (1500 µs). |
 
 
-| Fitur | Input (Sensor)      | Output (Aktuator)| Perilaku                                                               |
-|       |                     |                  |                                                                        |
-| Roll  | Accel sumbu X, Y, Z | Servo 1 dan 2    | Servo bergerak berlawanan arah terhadap perubahan Roll.                |
-| Pitch | Accel sumbu Y dan Z | Servo 3 dan 4    | Servo bergerak searah terhadap perubahan Pitch.                        |
-| Yaw   | Gyroscope sumbu Z   | Servo 5          | Servo merespons perubahan kecepatan sudut Z dan kembali ke posisi awal.|
-|Gerakan| PIR Sensor          | Servo 1-5        | Semua servo gerak ke +45 derajat 1,5 detik, dan kembali ke posisi awal.|
-
-
 Pemetaan Pin ESP32
 
-| Komponen    | Pin ESP32 |
-|             |           |
-| MPU6050 SDA | GPIO 21   |
-| MPU6050 SCL | GPIO 22   |
-| PIR OUT     | GPIO 13   |
-| Servo 1     | GPIO 14   |
-| Servo 2     | GPIO 27   |
-| Servo 3     | GPIO 26   |
-| Servo 4     | GPIO 25   |
-| Servo 5     | GPIO 33   |
+| Komponen | Pin Komponen | Pin ESP32 | Fungsi |
+|---|---|---|---|
+| MPU6050 | SDA | GPIO 21 | Komunikasi I2C |
+| MPU6050 | SCL | GPIO 22 | Komunikasi I2C |
+| MPU6050 | VCC | 3V3 | Catu daya |
+| MPU6050 | GND | GND | Ground |
+| PIR Sensor | OUT | GPIO 13 | Input digital |
+| PIR Sensor | VCC | 5V | Catu daya |
+| PIR Sensor | GND | GND | Ground |
+| Servo 1 | Signal | GPIO 14 | Output PWM |
+| Servo 2 | Signal | GPIO 27 | Output PWM |
+| Servo 3 | Signal | GPIO 26 | Output PWM |
+| Servo 4 | Signal | GPIO 25 | Output PWM |
+| Servo 5 | Signal | GPIO 33 | Output PWM |
+
+Catatan:
+- MPU6050 menggunakan komunikasi I2C.
+- Servo dikendalikan menggunakan sinyal PWM.
+- PIR menggunakan input digital.
+- Seluruh komponen menggunakan GND bersama.
 
 
 4. How to Run
