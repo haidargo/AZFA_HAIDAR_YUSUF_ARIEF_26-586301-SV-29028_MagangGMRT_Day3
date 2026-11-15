@@ -50,6 +50,16 @@ Asumsi Simulasi
 
 3. Feature Table
 
+## 3. Feature Table
+
+| Fitur | Input (Sensor) | Output (Aktuator) | Perilaku |
+|:---|:---|:---|:---|
+| **Roll** | Accelerometer (X, Y, Z) | Servo 1 dan Servo 2 | Servo bergerak berlawanan arah mengikuti perubahan sudut Roll. |
+| **Pitch** | Accelerometer (Y, Z) | Servo 3 dan Servo 4 | Servo bergerak searah mengikuti perubahan sudut Pitch. |
+| **Yaw** | Gyroscope (Z) | Servo 5 | Servo merespons perubahan kecepatan rotasi sumbu Z. Ketika rotasi berhenti, servo kembali ke posisi awal setelah 1 detik. |
+| **Gerakan Eksternal** | Sensor PIR | Servo 1–5 | Ketika gerakan terdeteksi, seluruh servo bergerak ke +45° (1750 µs) selama 1,5 detik, kemudian kembali ke posisi awal (1500 µs). |
+
+
 | Fitur | Input (Sensor)      | Output (Aktuator)| Perilaku                                                               |
 |       |                     |                  |                                                                        |
 | Roll  | Accel sumbu X, Y, Z | Servo 1 dan 2    | Servo bergerak berlawanan arah terhadap perubahan Roll.                |
